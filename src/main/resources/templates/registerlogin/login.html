@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center">
+            <div th:if="${param.error}">
+                email e password inválidos.
+            </div>
+            <div th:if="${param.logout}">
+                Logout
+            </div>
+            <form method="post" th:action="@{/login}">
+                <label>Username</label>
+                <input id="username" type="text" placeholder="Username" name="username">
+                <br>
+                <label>Password</label>
+                <input id="password" type="password" placeholder="Password" name="password">
+                <br>
+                <button type="submit" value="Log in" >Confirmar</button>
+                <a href="/register">Registro</a>
+            </form>
+        </div> 
+    </body>
+</html>

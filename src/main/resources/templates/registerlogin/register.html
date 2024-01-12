@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <form method="post" th:action="@{/register}" th:object="${registrationDto}" enctype="multipart/form-data" onsubmit="return validateFileSize()">
+                <label>Username</label>
+                <input type="text" placeholder="Username" th:field="*{username}">
+                <p th:if="${#fields.hasErrors('username')}" style="color: red; white-space: pre;">
+                    erros
+                </p>
+                <br>
+                <label>Password</label>
+                <input type="password" placeholder="Password" th:field="*{password}">
+                <p  th:if="${#fields.hasErrors('password')}" style="color: red; white-space: pre;">
+                    erros
+                </p>
+                <br>
+                <div>
+                    <label>Profile</label>
+                    <br>
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" th:field="*{profile.name}">
+                    <p th:if="${#fields.hasErrors('profile.name')}" style="color: red; white-space: pre;">
+                        erros
+                    </p>
+                    <br>
+                    <label>Birth date</label>
+                    <input type="date" th:field="*{profile.birthDate}">
+                    <p th:if="${#fields.hasErrors('profile.birthDate')}" style="color: red; white-space: pre;">
+                        erros
+                    </p>
+                    <br>
+                    <label>Age</label>
+                    <select th:field="*{profile.age}">
+                        <option th:each="number : ${#numbers.sequence(14, 100)}" th:value="${number}" th:text="${number}"></option>
+                    </select>
+                    <p th:if="${#fields.hasErrors('profile.age')}" style="color: red; white-space: pre;">
+                        erros
+                    </p>
+                    <br>
+                    <label>Location</label>
+                    <input type="text" placeholder="Where do you live?" th:field="*{profile.location}">
+                    <p th:if="${#fields.hasErrors('profile.location')}" style="color: red; white-space: pre;">
+                        erros
+                    </p>
+                    <br>
+                    <label>Biography</label>
+                    <textarea placeholder="Write you biography here " th:field="*{profile.biography}"></textarea>
+                    <p th:if="${#fields.hasErrors('profile.biography')}" style="color: red; white-space: pre;">
+                        erros
+                    </p>
+                    <br>
+                    <label>Perfil picture</label>
+                    <input type="file" name="avatarFile" accept="image/jpg">
+                    <p th:if="${#fields.hasErrors('profile.avatar')}" style="color: red; white-space: pre;">
+                        erros
+                    </p>
+                    <p id="avatarError" style="color: red; white-space: pre;"></p>
+                    <button type="submit">Confirmar</button>
+                    <a href="/login">Login</a>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function validateFileSize() {
+                var input = document.querySelector('input[name="avatarFile"]');
+                var fileSize = input.files[0].size; // in bytes
+                var maxSize = 1 * 1024 * 1024; // 1MB in bytes
+                var errorParagraph = document.getElementById('avatarError');
+
+                if (fileSize > maxSize) {
+                    errorParagraph.textContent = 'File size exceeds 1MB. Please choose a smaller file.';
+                    return false; // prevent form submission
+                }
+
+                // Clear previous error message
+                errorParagraph.textContent = '';
+
+                return true; // allow form submission
+            }
+        </script>
+
+    </body>
+</html>
