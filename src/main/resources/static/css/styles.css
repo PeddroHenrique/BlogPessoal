@@ -1,0 +1,307 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de jan. de 2024, 20:54:23
+    Author     : Pedro
+*/
+
+/* Add some basic styling to the navbar */
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333; /* Background color of the navbar */
+}
+
+li.nav-item {
+    float: left;
+}
+
+li.nav-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.nav-item a:hover {
+    background-color: #111; /* Background color when hovering over a link */
+}
+
+nav .search-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Add margin to the second search form for spacing */
+nav .search-container form:nth-child(2) {
+    margin-left: 10px;
+}
+
+/* Additional styles for the search form */
+nav .form-inline {
+    margin-top: auto; /* Center the form vertically */
+    margin-bottom: auto;
+}
+
+nav .form-inline input {
+    width: 300px; /* Increase the width of the search input */
+    height: 45px; /* Set the height of the search input */
+    border: 2px solid #6c757d; /* Add border to the input */
+    border-radius: 20px; /* Add border-radius for rounded corners */
+}
+
+nav .form-inline input:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 10px rgba(108, 117, 125, 0.5); /* Add a subtle box shadow on focus */
+}
+
+nav .form-inline button {
+    height: 40px; /* Set the height of the button to match the input */
+    border: 2px solid #28a745; /* Add border to the button */
+    border-radius: 20px; /* Add border-radius for rounded corners */
+    background-color: #28a745; /* Set background color */
+    color: white; /* Set text color */
+}
+
+nav .form-inline button:hover {
+    background-color: #218838; /* Darken the background color on hover */
+    border-color: #218838; /* Darken the border color on hover */
+}
+
+/* Style for the navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+/* Style for the avatar container */
+div.avatar-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the round avatar image */
+img.avatar {
+    border-radius: 50%;
+    width: 40px; /* Adjust the size as needed */
+    height: 40px;
+    cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+    margin-left: 10px; /* Add margin to separate the avatar from other elements if needed */
+}
+
+img.smaller-avatar {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Style for the profile details container */
+div.profile-details {
+    margin: 20px;
+}
+
+/* Style to display avatar before the name */
+div.avatar-before-name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+h1.user-name {
+    margin-left: 10px;
+}
+
+/* Add styles for the form in the register page */
+form {
+    margin: 20px;
+}
+
+/* Add styles for the error messages */
+p.error-message {
+    color: red;
+    white-space: pre;
+}
+
+
+/*--------------------------------------------*/
+
+
+/* Estilos específicos para a página de login */
+.login-container {
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
+}
+
+.login-form {
+    max-width: 300px; /* Defina a largura máxima do formulário */
+    margin: 0 auto; /* Centralize o formulário na página */
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: 2px solid #28a745;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.login-form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #28a745;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
+/*--------------------------------------------*/
+
+
+/* Estilos específicos para a página de registro */
+.registration-container {
+    margin-top: 50px; /* Ajuste a margem superior conforme necessário */
+}
+
+.registration-form {
+    max-width: 400px; /* Defina a largura máxima do formulário */
+    margin: 0 auto; /* Centralize o formulário na página */
+}
+
+.registration-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: 2px solid #28a745;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.registration-form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #28a745;
+}
+
+.registration-form a:hover {
+    text-decoration: underline;
+}
+
+.registration-form input[type="file"] {
+    display: none; /* Oculta o input original */
+}
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-input-wrapper label {
+    display: block;
+    padding: 10px;
+    background-color: #0073e6;
+    color: white;
+    border: 2px solid #28a745;
+    border-color: #0073e6;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.file-input-wrapper label:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.file-input-wrapper input[type="file"] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#imagePreviewWrapper {
+    margin-top: 10px;
+}
+
+#imagePreview {
+    max-width: 100%;
+    max-height: 150px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.register-error-message {
+    color: #721c24; /* Cor do texto vermelho escuro */
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    border: 1px solid #f5c6cb; /* Borda vermelha clara */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
+    margin-top: 10px; /* Espaçamento superior */
+    position: relative; /* Necessário para adicionar o ícone de aviso */
+}
+
+.register-error-message span {
+    display: block;
+    padding-left: 20px; /* Espaçamento à esquerda para o ícone de aviso */
+    white-space: pre-line; /* Adiciona quebra de linha para cada linha de texto */
+}
+
+.register-error-message::before {
+    content: '\26A0'; /* Código Unicode para o ícone de aviso */
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}

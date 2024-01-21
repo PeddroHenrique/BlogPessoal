@@ -49,13 +49,13 @@ public class RegisterLoginController {
         
         if (avatarFile != null && !avatarFile.isEmpty()) {
             if (avatarFile.getSize() > maxFileSize) {
-                result.rejectValue("profile.avatar", "avatar.size");
+                result.rejectValue("profile.avatar", "avatar.Size");
             } else {
                 try {
                     registrationDto.getProfile().setAvatar(avatarFile.getBytes());
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    result.rejectValue("profile.avatar", "avatar.empty");
+                    result.rejectValue("profile.avatar", "avatar.NotBlank");
                 }
             }
         } else {

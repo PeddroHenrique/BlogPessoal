@@ -26,18 +26,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @AllArgsConstructor
 public class Profile {
     @NotBlank
-    @Size(min = 4, max = 20)
+    @Size(min = 5, max = 20)
     private String name;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
     @Past
     private LocalDate birthDate;
-    @Min(value = 0)
+    @Min(value = 1)
     private int age;
     @NotBlank
     private String location;
     @NotBlank
-    @Size(min = 0, max = 250)
+    @Size(min = 1, max = 250)
     private String biography;
     private byte[] avatar;
     

@@ -24,7 +24,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class RegistrationDto {
     @NotBlank()
-    @Size(min = 4, max = 20)
+    @Size(min = 5, max = 20)
     @Pattern(regexp = "^[a-zA-Z0-9]+$")
     private String username;
     @NotBlank

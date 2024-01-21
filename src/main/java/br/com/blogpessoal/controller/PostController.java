@@ -43,8 +43,11 @@ public class PostController {
             return "post/new-post";
         }
         
-        post.setTitle(post.getTitle().trim());
-        post.setTitle(post.getTitle().replace("\\s+", " "));
+        
+        String editedTitle = post.getTitle();
+        editedTitle = editedTitle.trim();
+        editedTitle = editedTitle.replaceAll("\\s+", " ");
+        post.setTitle(editedTitle);
         
         String currentUsername = SecurityUtil.getSession();
         if (currentUsername != null) {

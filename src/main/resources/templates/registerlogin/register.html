@@ -5,66 +5,100 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Registro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Adicione o caminho correto para o seu arquivo de estilo CSS -->
     </head>
     <body>
-        <div>
-            <form method="post" th:action="@{/register}" th:object="${registrationDto}" enctype="multipart/form-data" onsubmit="return validateFileSize()">
-                <label>Username</label>
-                <input type="text" placeholder="Username" th:field="*{username}">
-                <p th:if="${#fields.hasErrors('username')}" style="color: red; white-space: pre;">
-                    erros
+        <div class="registration-container" align="center">
+            <form class="registration-form" method="post" th:action="@{/register}" th:object="${registrationDto}" enctype="multipart/form-data" onsubmit="return validateFileSize()">
+                <label for="username">Username</label>
+                <input id="username" type="text" placeholder="Username" th:field="*{username}">
+                <p th:if="${#fields.hasErrors('username')}" class="register-error-message">
+                    <span>
+                        O campo 'Username' não pode ser vazio.
+                        O 'Username' deve ter entre 5 e 20 caracteres.
+                        O 'Username' deve conter apenas letras maiúsculas, minúsculas e números.
+                    </span>
                 </p>
                 <br>
-                <label>Password</label>
-                <input type="password" placeholder="Password" th:field="*{password}">
-                <p  th:if="${#fields.hasErrors('password')}" style="color: red; white-space: pre;">
-                    erros
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Password" th:field="*{password}">
+                <p th:if="${#fields.hasErrors('password')}" class="register-error-message">
+                    <span>
+                        O campo 'Password' não pode ser vazio.
+                        O 'Password' deve ter entre 5 e 20 caracteres.
+                        O 'Password' deve conter apenas letras maiúsculas, minúsculas e números.
+                    </span>
                 </p>
                 <br>
-                <div>
-                    <label>Profile</label>
-                    <br>
-                    <label>Name</label>
-                    <input type="text" placeholder="Name" th:field="*{profile.name}">
-                    <p th:if="${#fields.hasErrors('profile.name')}" style="color: red; white-space: pre;">
-                        erros
+                <div class="profile-section">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" placeholder="Name" th:field="*{profile.name}">
+                    <p th:if="${#fields.hasErrors('profile.name')}" class="register-error-message">
+                        <span>
+                            O campo 'Name' não pode ser vazio.
+                            O 'Name' deve ter entre 5 e 20 caracteres.
+                        </span>
                     </p>
                     <br>
-                    <label>Birth date</label>
-                    <input type="date" th:field="*{profile.birthDate}">
-                    <p th:if="${#fields.hasErrors('profile.birthDate')}" style="color: red; white-space: pre;">
-                        erros
+                    <label for="birthDate">Birth date</label>
+                    <input id="birthDate" type="text" th:field="*{profile.birthDate}" readonly>
+                    <p th:if="${#fields.hasErrors('profile.birthDate')}" class="register-error-message">
+                        <span>
+                            Escolha uma data para o campo 'BirthDate'.
+                        </span>
                     </p>
                     <br>
-                    <label>Age</label>
-                    <select th:field="*{profile.age}">
+                    <label for="age">Age</label>
+                    <select id="age" th:field="*{profile.age}">
                         <option th:each="number : ${#numbers.sequence(14, 100)}" th:value="${number}" th:text="${number}"></option>
                     </select>
-                    <p th:if="${#fields.hasErrors('profile.age')}" style="color: red; white-space: pre;">
-                        erros
+                    <p th:if="${#fields.hasErrors('profile.age')}" class="register-error-message">
+                        <span>
+                            O campo 'age' deve ser maior que 0.
+                        </span>
                     </p>
                     <br>
-                    <label>Location</label>
-                    <input type="text" placeholder="Where do you live?" th:field="*{profile.location}">
-                    <p th:if="${#fields.hasErrors('profile.location')}" style="color: red; white-space: pre;">
-                        erros
+                    <label for="location">Location</label>
+                    <input id="location" type="text" placeholder="Where do you live?" th:field="*{profile.location}">
+                    <p th:if="${#fields.hasErrors('profile.location')}" class="register-error-message">
+                        <span>
+                            O campo 'Location' não pode ser vazio.
+                        </span>
                     </p>
                     <br>
-                    <label>Biography</label>
-                    <textarea placeholder="Write you biography here " th:field="*{profile.biography}"></textarea>
-                    <p th:if="${#fields.hasErrors('profile.biography')}" style="color: red; white-space: pre;">
-                        erros
+                    <label for="biography">Biography</label>
+                    <textarea id="biography" placeholder="Write your biography here" th:field="*{profile.biography}"></textarea>
+                    <p th:if="${#fields.hasErrors('profile.biography')}" class="register-error-message">
+                        <span>
+                            O campo 'Biography' não pode ser vazio.
+                            O 'Biography' deve ter entre 1 e 250 caracteres.
+                        </span>
                     </p>
                     <br>
-                    <label>Perfil picture</label>
-                    <input type="file" name="avatarFile" accept="image/jpg">
-                    <p th:if="${#fields.hasErrors('profile.avatar')}" style="color: red; white-space: pre;">
-                        erros
+                    <div class="file-input-wrapper">
+                        <label for="avatarFile" id="fileInputLabel" class="choose-avatar-button">Choose your avatar here </label>
+                        <input id="avatarFile" type="file" name="avatarFile" accept="image/jpg" onchange="previewImage()">
+                    </div>
+
+                    <div id="imagePreviewWrapper" style="display: none; margin-top: 10px;">
+                        <label for="avatarFile">Selected Image:</label>
+                        <img id="imagePreview" src="#" alt="Selected Avatar">
+                    </div>
+
+                    <p th:if="${#fields.hasErrors('profile.avatar')}" class="register-error-message">
+                        <span>
+                            O campo 'Avatar' não pode ser vazio.
+                            O arquivo 'Avatar' não deve ser maior que 1mb.
+                        </span>
                     </p>
-                    <p id="avatarError" style="color: red; white-space: pre;"></p>
+                    <p id="avatarError" class="error-message"></p>
                     <button type="submit">Confirmar</button>
                     <a href="/login">Login</a>
                 </div>
@@ -73,7 +107,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <script>
             function validateFileSize() {
-                var input = document.querySelector('input[name="avatarFile"]');
+                var input = document.getElementById('avatarFile');
                 var fileSize = input.files[0].size; // in bytes
                 var maxSize = 1 * 1024 * 1024; // 1MB in bytes
                 var errorParagraph = document.getElementById('avatarError');
@@ -88,7 +122,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 return true; // allow form submission
             }
-        </script>
+            
+            function previewImage() {
+            var fileInput = document.getElementById('avatarFile');
+            var previewImage = document.getElementById('imagePreview');
+            var previewWrapper = document.getElementById('imagePreviewWrapper');
+            var fileInputLabel = document.getElementById('fileInputLabel');
 
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewWrapper.style.display = 'block';
+                    fileInputLabel.textContent = 'Change your avatar';
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+        </script>
+        <script>
+            $(function () {
+                $("#birthDate").datepicker({
+                    dateFormat: 'yy-mm-dd', // Formato da data
+                    changeYear: true, // Permite selecionar o ano
+                    yearRange: "-100:+0", // Anos disponíveis (-100 anos a partir do ano atual até o ano atual)
+                    maxDate: '-1' // Impede a seleção de datas futuras
+                });
+            });
+        </script>
     </body>
 </html>

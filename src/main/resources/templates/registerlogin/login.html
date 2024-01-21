@@ -8,20 +8,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <!-- Adicione o caminho correto para o seu arquivo de estilo CSS -->
     </head>
     <body>
-        <div align="center">
-            <div th:if="${param.error}">
+        <div class="login-container" align="center">
+            <div class="error-message" th:if="${param.error}">
                 email e password inválidos.
             </div>
             <div th:if="${param.logout}">
                 Logout
             </div>
-            <form method="post" th:action="@{/login}">
-                <label>Username</label>
+            <form class="login-form" method="post" th:action="@{/login}">
+                <label for="username">Username</label>
                 <input id="username" type="text" placeholder="Username" name="username">
                 <br>
-                <label>Password</label>
+                <label for="password">Password</label>
                 <input id="password" type="password" placeholder="Password" name="password">
                 <br>
                 <button type="submit" value="Log in" >Confirmar</button>
